@@ -1,0 +1,106 @@
+(define (elevar x y)
+(expt x y))
+
+(define (sumar) ;funcion para sumar los numeros
+   (msg)
+   (define total (read)) ;numero total que va a tener
+   (define number) ;se guarda el numero que se va a operar
+   (define result 0) ;se guarda el resultado
+   (do ((i total (- i 1)))((<= i 0))
+    (display "You have ") 
+    (display i)
+    (display " numbers left to operate. Press 'enter' to submit your number: ")
+    (set! number (read)) ;el numero queda guardado
+    (set! result (+ result number))
+    (display "The result is: ")
+    (display result)
+    (newline)
+   )
+   
+)
+
+(define (restar) ;funcion para restar los numeros
+ (msg)
+ (display " (keep in mind that the operation is made by subtracting the last submitted number by the most recent one, so if you need to know 2-1 you should input the 1 first)")
+   (define total (read)) ;numero total que va a tener
+   (define number) ;se guarda el numero que se va a operar
+   (define result 0) ;se guarda el resultado
+   (do ((i total (- i 1)))((<= i 0))
+    (display "You have ") 
+    (display i)
+    (display " numbers left to operate. Press 'enter' to submit your number: ")
+    (set! number (read)) ;el numero queda guardado
+    (set! result (-  number result  ))
+    (display "The result is: ")
+    (display result)
+    (newline)
+   ))
+(define (multiplicar) ;funcion para multiplicar un numero
+ (msg)
+   (define total (read)) ;numero total que va a tener
+   (define number) ;se guarda el numero que se va a operar
+   (define result 1) ;se guarda el resultado
+   (do ((i total (- i 1)))((<= i 0))
+    (display "You have ") 
+    (display i)
+    (display " numbers left to operate. Press 'enter' to submit your number: ")
+    (set! number (read)) ;el numero queda guardado
+    (set! result (* result number))
+    (display "The result is: ")
+    (display result)
+    (newline)
+   ))
+(define (msg) (display "How many numbers you wish to operate?: ")) ;funcion que mustra el mensaje
+(define (dividir) ;funcion para dividir un numero
+ (msg)
+  (display " (keep in mind that the operation is made by dividing the last submitted number by the most recent one, so if you need to know 2/1 you should input the 1 first)")
+   (define total (read)) ;numero total que va a tener
+   (define number) ;se guarda el numero que se va a operar
+   (define result 1) ;se guarda el resultado
+   (do ((i total (- i 1)))((<= i 0))
+    (display "You have ") 
+    (display i)
+    (display " numbers left to operate. Press 'enter' to submit your number: ")
+    (set! number (read)) ;el numero queda guardado
+    (set! result (/ number result ))
+    (display "The result is: ")
+    (display result)
+    (newline)
+   ))
+
+(define (exit)
+(display "See you later alligator ❤ (●'◡'●) ❤"))
+(define (option op) 
+  (cond
+   ((= op 1) (sumar))
+   ((= op 2) (restar))
+   ((= op 3) (multiplicar))
+   ((= op 4) (dividir))
+   ((= op 5) 
+   (display "Choose a base: ")
+   (define x (read))
+   (newline)
+   (display "Choose an exponent: ")
+   (define y (read))
+   (newline)
+   (display "The result is: ")
+   (display (elevar x y)))
+   ((= op 0) (exit))
+   (else (display "Oops, it seems there was a problem (っ °Д °;)っ"))))
+(define (menu) ;funcion que muestra el menu con las opciones
+
+(display "Scheme Calculator") ;muestra en pantalla la calculadora scheme
+(newline) ;espacio de linea (conocido como \n en otros lenguajes)
+(display "Welcome, this is an easy to use calculator that's very useful just for the dullest operations! ") ;muestra en pantalla 
+(display "You can only do one arithmetic operation at a time, this are the ones:") ;muestra en pantalla
+(newline) ;espacio de linea (conocido como \n en otros lenguajes)
+(display "\n1-Addition\n2-Subtraction\n3-Multiplication\n4-Division\n5-Power\n0-Exit\n") ;muestra en pantalla
+;(display "Keep in mind that if you need to exit you ;just need to press any other key that isn't a given option") ;muestra en pantalla
+(newline) ;salto de linea 
+(display "Which one do you need help with?: ") ;muestra en pantalla
+(define op (read)) ;recibe el numero con la funcion read
+(option op)
+)
+
+
+(menu)
